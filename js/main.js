@@ -160,11 +160,18 @@ function renderHistory() {
 /**
  * Rensar formulär, aktuellt studentkort och felmeddelanden.
  */
-function clearForm() {
-    // Återställ formulär och studentkort
 
-    // Rensa eventuella felmeddelanden
+function clearForm() {
+    form.reset();
+
+    previewFullname.textContent = "";
+    previewEmail.textContent = "";
+    previewPhone.textContent = "";
+
+    errors = [];
+    displayErrors();
 }
+
 
 
 /**
