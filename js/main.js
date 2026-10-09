@@ -85,29 +85,47 @@ function createStudentCard() {
     previewEmail.textContent = email;
     previewPhone.textContent = phone;
 
+    
     previewFullname.style.fontFamily = font;
     previewEmail.style.fontFamily = font;
     previewPhone.style.fontFamily = font;
-}
 
+    const student = {
+        fullname: fullname,
+        email: email,
+        phone: phone,
+        font: font
+    };
+
+    history.unshift(student);
+    saveHistory();
+    renderHistory();
+}
 
 
 /**
  * Sparar historiken i localStorage.
  */
 function saveHistory() {
-    // Spara history i localStorage
+    localStorage.setItem("studentHistory", JSON.stringify(history));
 }
+
 
 
 /**
  * Läser in tidigare historik från localStorage.
  */
 function loadHistory() {
-    // Hämta eventuell sparad historik
+    const savedHistory = localStorage.getItem("studentHistory");
 
-    // Uppdatera history
+    if (savedHistory !== null) {
+        history = JSON.parse(savedHistory);
+    }
+
+    renderHistory();
 }
+
+
 
 
 /**
