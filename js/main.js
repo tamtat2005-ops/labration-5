@@ -174,14 +174,17 @@ function clearForm() {
 
 
 
+
 /**
  * Raderar hela historiken.
  */
-function deleteHistory() {
-    // Radera sparad historik
 
-    // Uppdatera history och visningen på sidan
+function deleteHistory() {
+    history = [];
+    localStorage.removeItem("studentHistory");
+    renderHistory();
 }
+
 
 
 // Eventlyssnare
