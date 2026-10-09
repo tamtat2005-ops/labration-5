@@ -217,4 +217,4 @@ form.addEventListener("submit", function (event) {
     }
 
     createStudentCard();
-});
+})
