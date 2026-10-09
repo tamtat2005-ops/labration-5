@@ -32,23 +32,43 @@ let history = [];
  * Validerar formulärets inmatning.
  * @returns {boolean}
  */
+
 function validateForm() {
-    // Kontrollera formulärets obligatoriska fält
+    errors = [];
 
-    // Visa eventuella felmeddelanden
+    if (fullnameInput.value.trim() === "") {
+        errors.push("Du måste ange ditt namn.");
+    }
 
-    // Returnera resultatet (true eller false) av valideringen
+    if (emailInput.value.trim() === "") {
+        errors.push("Du måste ange din e-postadress.");
+    }
+
+    if (phoneInput.value.trim() === "") {
+        errors.push("Du måste ange ditt telefonnummer.");
+    }
+
+    displayErrors();
+
+    return errors.length === 0;
 }
+
 
 
 /**
  * Visar felmeddelanden på sidan.
  */
-function displayErrors() {
-    // Rensa tidigare felmeddelanden
 
-    // Skriv ut aktuella felmeddelanden till DOM
+function displayErrors() {
+    errorList.innerHTML = "";
+
+    errors.forEach(function (error) {
+        const listItem = document.createElement("li");
+        listItem.textContent = error;
+        errorList.appendChild(listItem);
+    });
 }
+
 
 
 /**
