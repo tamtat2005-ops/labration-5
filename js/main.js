@@ -74,15 +74,22 @@ function displayErrors() {
 /**
  * Skapar ett studentkort och visar det på sidan.
  */
+
 function createStudentCard() {
-    // Hämta information från formuläret
+    const fullname = fullnameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const font = fontSelect.value;
 
-    // Uppdatera studentkortet
+    previewFullname.textContent = fullname;
+    previewEmail.textContent = email;
+    previewPhone.textContent = phone;
 
-    // Lägg till studentkortet i historiken
-
-    // Spara och uppdatera historiken
+    previewFullname.style.fontFamily = font;
+    previewEmail.style.fontFamily = font;
+    previewPhone.style.fontFamily = font;
 }
+
 
 
 /**
@@ -148,3 +155,13 @@ function deleteHistory() {
 
 // När sidan laddas:
 // - läs in och visa eventuell tidigare historik
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (!validateForm()) {
+        return;
+    }
+
+    createStudentCard();
+});
